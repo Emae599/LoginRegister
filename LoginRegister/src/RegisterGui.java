@@ -9,10 +9,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterGui extends JFrame implements ActionListener, FocusListener {
-    private ErrorLabel usernameErrorLabel, passwordErrorLabel, confirmPasswordErrorLabel, emailErrorLabel;
-    private TextFieldCustom usernameField, emailField;
-    private PasswordFieldCustom passwordField, confirmPasswordField;
-    private Font customFont;
+ private ErrorLabel firstnameErrorLabel, lastnameErrorLabel, NumberErrorLabel, passwordErrorLabel, confirmPasswordErrorLabel, emailErrorLabel;
+ private TextFieldCustom firstnameField, lastnameField, emailField, numberField;
+ private PasswordFieldCustom passwordField, confirmPasswordField;
+ private Font customFont;
 
     public RegisterGui(){
         super("Effortless Loan Management Solution. Register");
@@ -41,23 +41,63 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
                 CommonConstants.REGISTER_LABEL_SIZE.width, CommonConstants.REGISTER_LABEL_SIZE.height
         );
 
-        // username field
-        usernameField = new TextFieldCustom("Enter Username", 30);
-        usernameField.setFont(customFont.deriveFont(32f));
-        usernameField.setBackground(CommonConstants.SECONDARY_COLOR);
-        usernameField.setForeground(Color.WHITE);
-        usernameField.setBounds(
+        // first name field
+        firstnameField = new TextFieldCustom("Enter First Name", 30);
+        firstnameField.setFont(customFont.deriveFont(32f));
+        firstnameField.setBackground(CommonConstants.SECONDARY_COLOR);
+        firstnameField.setForeground(Color.WHITE);
+        firstnameField.setBounds(
                 50,
-                registerLabel.getY() + 150,
+                registerLabel.getY() + 100,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
-        usernameField.addFocusListener(this);
+        firstnameField.addFocusListener(this);
 
-        // username error label
-        usernameErrorLabel = new ErrorLabel("*Invalid: Can't be less than 6 characters");
-        usernameErrorLabel.setBounds(
+        // first name error label
+        firstnameErrorLabel = new ErrorLabel("*Invalid: Enter First Name");
+        firstnameErrorLabel.setBounds(
                 50,
-                usernameField.getY() + 50,
+                firstnameField.getY() + 50,
+                CommonConstants.TEXTFIELD_SIZE.width, 25
+        );
+        
+        // last name field
+        lastnameField = new TextFieldCustom("Enter Last Name", 30);
+        lastnameField.setFont(customFont.deriveFont(32f));
+        lastnameField.setBackground(CommonConstants.SECONDARY_COLOR);
+        lastnameField.setForeground(Color.WHITE);
+        lastnameField.setBounds(
+                50,
+                firstnameField.getY() + 100,
+                CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
+        );
+        lastnameField.addFocusListener(this);
+
+        // last name error label
+        lastnameErrorLabel = new ErrorLabel("*Invalid: Enter Last Name");
+        lastnameErrorLabel.setBounds(
+                50,
+                lastnameField.getY() + 50,
+                CommonConstants.TEXTFIELD_SIZE.width, 25
+        );
+        
+        // phone number field
+        numberField = new TextFieldCustom("Enter Phone Number", 30);
+        numberField.setFont(customFont.deriveFont(32f));
+        numberField.setBackground(CommonConstants.SECONDARY_COLOR);
+        numberField.setForeground(Color.WHITE);
+        numberField.setBounds(
+                50,
+                lastnameField.getY() + 100,
+                CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
+        );
+        numberField.addFocusListener(this);
+
+        // phone number error label
+        NumberErrorLabel = new ErrorLabel("*Invalid: Enter your Phone number");
+        NumberErrorLabel.setBounds(
+                50,
+                numberField.getY() + 50,
                 CommonConstants.TEXTFIELD_SIZE.width, 25
         );
 
@@ -68,7 +108,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         passwordField.setForeground(Color.WHITE);
         passwordField.setBounds(
                 50,
-                usernameField.getY() + 100,
+                numberField.getY() + 100,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         passwordField.addFocusListener(this);
@@ -135,11 +175,11 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
 
         // register -> login label
         JLabel loginLabel = new JLabel("Already a user? Login Here");
-        loginLabel.setFont(customFont.deriveFont(32f));
+        loginLabel.setFont(customFont.deriveFont(27f));
         loginLabel.setForeground(CommonConstants.SECONDARY_COLOR);
         loginLabel.setBounds(
                 (CommonConstants.FRAME_SIZE.width - loginLabel.getPreferredSize().width)/2,
-                registerButton.getY() + 100,
+                registerButton.getY() + 50,
                 loginLabel.getPreferredSize().width, loginLabel.getPreferredSize().height
         );
         loginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -164,9 +204,17 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         // add to frame
         getContentPane().add(registerLabel);
 
-        // username
-        getContentPane().add(usernameField);
-        getContentPane().add(usernameErrorLabel);
+        // first name
+        getContentPane().add(firstnameField);
+        getContentPane().add(firstnameErrorLabel);
+        
+        // last name
+        getContentPane().add(lastnameField);
+        getContentPane().add(lastnameErrorLabel);
+        
+        // phone number
+        getContentPane().add(numberField);
+        getContentPane().add(NumberErrorLabel);
 
         // password
         getContentPane().add(passwordField);
@@ -192,15 +240,26 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
     @Override
     public void focusLost(FocusEvent e) {
         Object fieldSource = e.getSource();
-        if(fieldSource == usernameField){
-            // valid username has to be greater or eequal to 6
-            if(usernameField.getText().length() < 6 || usernameField.isHasPlaceHolder()){
-                usernameErrorLabel.setVisible(true);
+        if(fieldSource == firstnameField){
+            // valid first name has to be greater or equal to 0
+            if(firstnameField.getText().length() < 0 || firstnameField.isHasPlaceHolder()){
+                firstnameErrorLabel.setVisible(true);
             }else{
-                usernameErrorLabel.setVisible(false);
-            }
+                firstnameErrorLabel.setVisible(false);}
+        }else if(fieldSource == lastnameField){
+                // valid last name has to be greater or equal to 0
+                if(lastnameField.getText().length() < 0 || lastnameField.isHasPlaceHolder()){
+                    lastnameErrorLabel.setVisible(true);
+                }else{
+                    lastnameErrorLabel.setVisible(false);}
+        }else if(fieldSource == numberField){
+            // valid number has to be greater or equal to 11
+            if(numberField.getText().length() < 11 || numberField.isHasPlaceHolder()){
+                NumberErrorLabel.setVisible(true);
+            }else{
+                NumberErrorLabel.setVisible(false);}
         }else if(fieldSource == passwordField){
-            // if password isn't 6 charactres long, has 1 uppercase and 1 lowercase, and a special character it is invalid
+            // if password isn't 6 characters long, has 1 uppercase and 1 lowercase, and a special character it is invalid
             String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&-+=()<>~`])(?=\\S+$).{6,30}$";
             Pattern p = Pattern.compile(passwordRegex);
             Matcher m = p.matcher(passwordField.getText());
@@ -228,9 +287,9 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         String command = e.getActionCommand();
         if(command.equals("Register")){
             // validate that no error labels are present and that they aren't left in placeholder state
-            boolean isValid = !usernameErrorLabel.isVisible() && !passwordErrorLabel.isVisible() && !confirmPasswordErrorLabel.isVisible()
-                    && !emailErrorLabel.isVisible() && !usernameField.isHasPlaceHolder() && !passwordField.isHasPlaceHolder()
-                    && !confirmPasswordField.isHasPlaceHolder() && !emailField.isHasPlaceHolder();
+   boolean isValid = !firstnameErrorLabel.isVisible() && !lastnameErrorLabel.isVisible() && !NumberErrorLabel.isVisible() && !confirmPasswordErrorLabel.isVisible()
+   && !emailErrorLabel.isVisible() && !firstnameField.isHasPlaceHolder() && !lastnameField.isHasPlaceHolder() &&!numberField.isHasPlaceHolder() &&!passwordField.isHasPlaceHolder()
+   && !confirmPasswordField.isHasPlaceHolder() && !emailField.isHasPlaceHolder();
 
             // result dialog
             JDialog resultDialog = new JDialog();
@@ -249,7 +308,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
 
             if(isValid){
                 // store the user info into the UserDB
-                String username = usernameField.getText();
+                String username = firstnameField.getText();
                 String password = passwordField.getText();
                 UserDB.addUser(username, password);
 
