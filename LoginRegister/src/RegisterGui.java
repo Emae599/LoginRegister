@@ -48,7 +48,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         firstnameField.setForeground(Color.WHITE);
         firstnameField.setBounds(
                 50,
-                registerLabel.getY() + 100,
+                registerLabel.getY() + 130,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         firstnameField.addFocusListener(this);
@@ -68,7 +68,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         lastnameField.setForeground(Color.WHITE);
         lastnameField.setBounds(
                 50,
-                firstnameField.getY() + 100,
+                firstnameField.getY() + 75,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         lastnameField.addFocusListener(this);
@@ -88,7 +88,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         numberField.setForeground(Color.WHITE);
         numberField.setBounds(
                 50,
-                lastnameField.getY() + 100,
+                lastnameField.getY() + 75,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         numberField.addFocusListener(this);
@@ -108,7 +108,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         passwordField.setForeground(Color.WHITE);
         passwordField.setBounds(
                 50,
-                numberField.getY() + 100,
+                numberField.getY() + 75,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         passwordField.addFocusListener(this);
@@ -128,7 +128,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         confirmPasswordField.setForeground(Color.WHITE);
         confirmPasswordField.setBounds(
                 50,
-                passwordField.getY() + 100,
+                passwordField.getY() + 75,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         confirmPasswordField.addFocusListener(this);
@@ -148,7 +148,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         emailField.setForeground(Color.WHITE);
         emailField.setBounds(
                 50,
-                confirmPasswordField.getY() + 100,
+                confirmPasswordField.getY() + 75,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         emailField.addFocusListener(this);
@@ -168,18 +168,18 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         registerButton.setForeground(Color.WHITE);
         registerButton.setBounds(
                 50,
-                emailField.getY() + 100,
+                emailField.getY() + 75,
                 CommonConstants.TEXTFIELD_SIZE.width, CommonConstants.TEXTFIELD_SIZE.height
         );
         registerButton.addActionListener(this);
 
         // register -> login label
         JLabel loginLabel = new JLabel("Already a user? Login Here");
-        loginLabel.setFont(customFont.deriveFont(27f));
+        loginLabel.setFont(customFont.deriveFont(32f));
         loginLabel.setForeground(CommonConstants.SECONDARY_COLOR);
         loginLabel.setBounds(
                 (CommonConstants.FRAME_SIZE.width - loginLabel.getPreferredSize().width)/2,
-                registerButton.getY() + 50,
+                registerButton.getY() + 75,
                 loginLabel.getPreferredSize().width, loginLabel.getPreferredSize().height
         );
         loginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
