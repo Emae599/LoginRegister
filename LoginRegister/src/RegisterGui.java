@@ -308,9 +308,11 @@ private ErrorLabel firstnameErrorLabel, lastnameErrorLabel, NumberErrorLabel, pa
 
             if(isValid){
                 // store the user info into the UserDB
-                String username = firstnameField.getText();
+                String number = numberField.getText();
+                String email = emailField.getText();
                 String password = passwordField.getText();
-                UserDB.addUser(username, password);
+                UserDB.addUser1(number, password);
+                UserDB.addUser2(email, password);
 
                 // show a dialog that shows that the user has been added to the UserDB
                 resultLabel.setText("Account Registered!");
