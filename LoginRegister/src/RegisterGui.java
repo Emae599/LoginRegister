@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterGui extends JFrame implements ActionListener, FocusListener {
- private ErrorLabel firstnameErrorLabel, lastnameErrorLabel, NumberErrorLabel, passwordErrorLabel, confirmPasswordErrorLabel, emailErrorLabel;
+private ErrorLabel firstnameErrorLabel, lastnameErrorLabel, NumberErrorLabel, passwordErrorLabel, confirmPasswordErrorLabel, emailErrorLabel;
  private TextFieldCustom firstnameField, lastnameField, emailField, numberField;
  private PasswordFieldCustom passwordField, confirmPasswordField;
  private Font customFont;
@@ -43,9 +43,9 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
 
         // first name field
         firstnameField = new TextFieldCustom("Enter First Name", 30);
-        firstnameField.setFont(customFont.deriveFont(32f));
-        firstnameField.setBackground(CommonConstants.SECONDARY_COLOR);
-        firstnameField.setForeground(Color.WHITE);
+        firstnameField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        firstnameField.setBackground(Color.WHITE);
+        firstnameField.setForeground(Color.GRAY);
         firstnameField.setBounds(
                 50,
                 registerLabel.getY() + 130,
@@ -63,9 +63,9 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         
         // last name field
         lastnameField = new TextFieldCustom("Enter Last Name", 30);
-        lastnameField.setFont(customFont.deriveFont(32f));
-        lastnameField.setBackground(CommonConstants.SECONDARY_COLOR);
-        lastnameField.setForeground(Color.WHITE);
+        lastnameField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        lastnameField.setBackground(Color.WHITE);
+        lastnameField.setForeground(Color.GRAY);
         lastnameField.setBounds(
                 50,
                 firstnameField.getY() + 75,
@@ -83,9 +83,9 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         
         // phone number field
         numberField = new TextFieldCustom("Enter Phone Number", 30);
-        numberField.setFont(customFont.deriveFont(32f));
-        numberField.setBackground(CommonConstants.SECONDARY_COLOR);
-        numberField.setForeground(Color.WHITE);
+        numberField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        numberField.setBackground(Color.WHITE);
+        numberField.setForeground(Color.GRAY);
         numberField.setBounds(
                 50,
                 lastnameField.getY() + 75,
@@ -103,9 +103,9 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
 
         // password field
         passwordField = new PasswordFieldCustom("Enter Password", 30);
-        passwordField.setFont(customFont.deriveFont(32f));
-        passwordField.setBackground(CommonConstants.SECONDARY_COLOR);
-        passwordField.setForeground(Color.WHITE);
+        passwordField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        passwordField.setBackground(Color.WHITE);
+        passwordField.setForeground(Color.GRAY);
         passwordField.setBounds(
                 50,
                 numberField.getY() + 75,
@@ -114,7 +114,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
         passwordField.addFocusListener(this);
 
         // password error label
-        passwordErrorLabel = new ErrorLabel("*Invalid: Size > 6, 1 Upper and Lower, 1 #, and 1 Special Char");
+        passwordErrorLabel = new ErrorLabel("*Invalid: More than 6, 1 Upper and Lower, and Number/s");
         passwordErrorLabel.setBounds(
                 50,
                 passwordField.getY() + 50,
@@ -123,9 +123,9 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
 
         // confirm password field
         confirmPasswordField = new PasswordFieldCustom("Confirm Password", 30);
-        confirmPasswordField.setFont(customFont.deriveFont(32f));
-        confirmPasswordField.setBackground(CommonConstants.SECONDARY_COLOR);
-        confirmPasswordField.setForeground(Color.WHITE);
+        confirmPasswordField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        confirmPasswordField.setBackground(Color.WHITE);
+        confirmPasswordField.setForeground(Color.GRAY);
         confirmPasswordField.setBounds(
                 50,
                 passwordField.getY() + 75,
@@ -143,9 +143,9 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
 
         // email field
         emailField = new TextFieldCustom("Enter E-Mail", 30);
-        emailField.setFont(customFont.deriveFont(32f));
-        emailField.setBackground(CommonConstants.SECONDARY_COLOR);
-        emailField.setForeground(Color.WHITE);
+        emailField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        emailField.setBackground(Color.WHITE);
+        emailField.setForeground(Color.GRAY);
         emailField.setBounds(
                 50,
                 confirmPasswordField.getY() + 75,
@@ -197,7 +197,7 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
 
             @Override
             public void mouseExited(MouseEvent e) {
-                loginLabel.setForeground(new Color(0,0,0));
+                loginLabel.setForeground(CommonConstants.SECONDARY_COLOR);
             }
         });
 
@@ -259,8 +259,8 @@ public class RegisterGui extends JFrame implements ActionListener, FocusListener
             }else{
                 NumberErrorLabel.setVisible(false);}
         }else if(fieldSource == passwordField){
-            // if password isn't 6 characters long, has 1 uppercase and 1 lowercase, and a special character it is invalid
-            String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&-+=()<>~`])(?=\\S+$).{6,30}$";
+            // if password isn't 6 characters long, has 1 uppercase and 1 lowercase, it is invalid
+            String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,30}$";
             Pattern p = Pattern.compile(passwordRegex);
             Matcher m = p.matcher(passwordField.getText());
             if(!m.find()) passwordErrorLabel.setVisible(true);
