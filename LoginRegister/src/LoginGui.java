@@ -38,8 +38,8 @@ public class LoginGui extends JFrame implements ActionListener {
                 CommonConstants.LOGIN_IMAGE_SIZE.width, CommonConstants.LOGIN_IMAGE_SIZE.height
         );
 
-        // username field
-        usernameField = new TextFieldCustom("Enter Username", 30);
+        // Phone Number/Email Account field
+        usernameField = new TextFieldCustom("Enter Phone Number/E-Mail", 30);
         usernameField.setFont(new Font("Aptos", Font.PLAIN, 16));
         usernameField.setBackground(Color.WHITE);
         usernameField.setForeground(Color.GRAY);
