@@ -40,9 +40,9 @@ public class LoginGui extends JFrame implements ActionListener {
 
         // username field
         usernameField = new TextFieldCustom("Enter Username", 30);
-        usernameField.setFont(customFont.deriveFont(32f));
-        usernameField.setBackground(CommonConstants.SECONDARY_COLOR);
-        usernameField.setForeground(Color.WHITE);
+        usernameField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        usernameField.setBackground(Color.WHITE);
+        usernameField.setForeground(Color.GRAY);
         usernameField.setBounds(
                 50,
                 loginImage.getY() + 315,
@@ -51,9 +51,9 @@ public class LoginGui extends JFrame implements ActionListener {
 
         // password field
         passwordField = new PasswordFieldCustom("Enter Password", 30);
-        passwordField.setFont(customFont.deriveFont(32f));
-        passwordField.setBackground(CommonConstants.SECONDARY_COLOR);
-        passwordField.setForeground(Color.WHITE);
+        passwordField.setFont(new Font("Aptos", Font.PLAIN, 16));
+        passwordField.setBackground(Color.WHITE);
+        passwordField.setForeground(Color.GRAY);
         passwordField.setBounds(
                 50,
                 usernameField.getY() + 100,
@@ -96,7 +96,7 @@ public class LoginGui extends JFrame implements ActionListener {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                registerLabel.setForeground(new Color(0,0,0));
+                registerLabel.setForeground(CommonConstants.SECONDARY_COLOR);
             }
         });
 
